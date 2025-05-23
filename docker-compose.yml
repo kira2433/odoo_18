@@ -12,6 +12,7 @@ services:
       - odoo-web-data:/var/lib/odoo
       - ./configurations/dev/config:/etc/odoo
       - ./addons:/mnt/addons
+      - ./accounting:/mnt/accounting
     environment:
       - DB_HOST=db
       - DB_USER=odoo

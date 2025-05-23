@@ -1,15 +1,13 @@
 FROM odoo:18.0
 
 USER root
-# RUN apt-get update && apt-get install -y --no-install-recommends \
-#     some-extra-package \
-#     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /mnt/extra-addons && chown -R odoo:odoo /mnt/extra-addons
+RUN mkdir -p /mnt/addons /mnt/accounting && chown -R odoo:odoo /mnt/addons /mnt/accounting
 COPY ./configurations/dev/config/odoo.conf /etc/odoo
-COPY ./addons /mnt/extra-addons
+COPY ./addons /mnt/addons
+COPY ./accounting /mnt/accounting
 
-RUN chown -R odoo:odoo /mnt/extra-addons
+RUN chown -R odoo:odoo /mnt/extra-addons /mnt/accounting
 
 # Switch to the odoo user
 USER odoo
