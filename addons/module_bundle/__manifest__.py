@@ -5,7 +5,15 @@
     'category': 'Tools',
     'summary': 'Installs core Odoo apps',
     'depends': [
-        "account_reconcile_oca"
+        "account_reconcile_oca",
+        "accounting_pdf_reports",
+        "om_account_asset",
+        "om_account_budget",
+        "om_fiscal_year",
+        "om_recurring_payments",
+        "om_account_daily_reports",
+        "om_account_followup",
+        "om_account_accountant",
     ],
     'installable': True,
     'auto_install': False,
