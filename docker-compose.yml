@@ -1,0 +1,36 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8033:8069"
+    tty: true
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./configurations/dev/config:/etc/odoo
+      - ./addons:/mnt/addons
+    environment:
+      - DB_HOST=db
+      - DB_USER=odoo
+      - DB_PASSWORD=odoo15@2021
+    restart: always
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo15@2021
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    restart: always
+    ports:
+      - "2481:5432"
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+
+volumes:
+  odoo-web-data:
+  odoo-db-data:
