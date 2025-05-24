@@ -14,6 +14,7 @@
         "om_account_daily_reports",
         "om_account_followup",
         "om_account_accountant",
+        "muk_web_theme",
     ],
     'installable': True,
     'auto_install': False,
