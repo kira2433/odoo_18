@@ -13,6 +13,7 @@ services:
       - ./configurations/dev/config:/etc/odoo
       - ./addons:/mnt/addons
       - ./accounting:/mnt/accounting
+      - ./theme:/mnt/theme
     environment:
       - DB_HOST=db
       - DB_USER=odoo
